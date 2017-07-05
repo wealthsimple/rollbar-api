@@ -6,7 +6,7 @@ require "rollbar-api"
 project_name = ENV["ROLLBAR_PROJECT_NAME"] or raise "Must specify ROLLBAR_PROJECT_NAME in .env"
 project_access_token = ENV["ROLLBAR_PROJECT_ACCESS_TOKEN"] or raise "Must specify ROLLBAR_PROJECT_ACCESS_TOKEN in .env"
 
-RollbarApi::Project.add(project_name, project_access_token)
+RollbarApi::Project.configure(project_name, project_access_token)
 
 top_active_items = RollbarApi::Project.find(project_name).get("/api/1/reports/top_active_items", {
   hours: "24",

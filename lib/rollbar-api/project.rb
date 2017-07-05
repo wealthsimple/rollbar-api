@@ -2,7 +2,7 @@ module RollbarApi
   class Project
     @@projects = {}
 
-    def self.add(project_name, project_access_token)
+    def self.configure(project_name, project_access_token)
       @@projects[project_name] = project_access_token
     end
 

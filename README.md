@@ -21,8 +21,8 @@ Next, configure each project:
 require 'rollbar-api'
 
 # Add as many projects as you need. Each should have a unique access token.
-RollbarApi::Project.add("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
-RollbarApi::Project.add("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"])
+RollbarApi::Project.configure("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
+RollbarApi::Project.configure("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"])
 ```
 
 ### REST API
