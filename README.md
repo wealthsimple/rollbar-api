@@ -2,7 +2,7 @@
 
 Rubygem for accessing Rollbar's full REST and RQL APIs. 
 
-The [official rollbar rubygem](https://github.com/rollbar/rollbar-gem) only covers the exception tracking portion of the API, whereas this rubygem provides a basic interface over all project-level API endpoints.
+The [official rollbar rubygem](https://github.com/rollbar/rollbar-gem) only covers a small portion of the API, whereas this rubygem provides an interface over all project-level API endpoints, including the Rollbar Query Language (RQL) endpoints.
 
 ## Installation
 
