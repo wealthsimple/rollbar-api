@@ -4,11 +4,7 @@ Rubygem for accessing Rollbar's full REST and RQL APIs.
 
 ## Installation
 
-First, generate read-only project access tokens for each project at:
-
-https://rollbar.com/YOUR_ACCOUNT/YOUR_PROJECT/settings/access_tokens/
-
-Next, add this line to your application's Gemfile and run `bundle` to install:
+Add this line to your application's Gemfile and run `bundle` to install:
 
 ```ruby
 gem 'rollbar-api'
@@ -16,21 +12,28 @@ gem 'rollbar-api'
 
 ## Usage
 
-First, configure it in an initializer with:
+First, generate read-only access tokens for each project you need access to by navigating to **Settings** > **Project Access Tokens** and clicking **Add new access token**.
+
+Next, configure each project:
 
 ```ruby
+# config/initializers/rollbar-api.rb in a Rails project
 require 'rollbar-api'
 
-# Add as many projects as you want
+# Add as many projects as you need. Each should have a unique access token.
 RollbarApi::Project.add("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
 RollbarApi::Project.add("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"])
 ```
 
-Next, you can fetch items, deploys, occurrences, on so on:
+### REST API
+
+You can make HTTP `GET` calls to fetch items, deploys, occurrences, and so on by finding any project you added in the configuration and calling `.get` with the API endpoint:
 
 ```ruby
 items = RollbarApi::Project.find("my-project").get("/api/1/items/")
 ```
+
+### RQL Queries
 
 You can also run RQL queries:
 
