@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.license       = "MIT"
 
   spec.add_dependency "activesupport", ">= 4"
   spec.add_dependency "faraday", "0.12.1"
