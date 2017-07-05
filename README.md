@@ -1,4 +1,4 @@
-# RollbarApi
+# rollbar_api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar_api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar_api)
 
 Rubygem for accessing Rollbar's full REST and RQL APIs.
 
