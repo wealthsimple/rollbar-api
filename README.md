@@ -40,8 +40,14 @@ rql_job = RollbarApi::Project.find("my-project").post("/api/1/rql/jobs", {
   query_string: "select * from item_occurrence where item.counter=1",
 })
 
-# Check it's status
+# Check its status
 rql_job = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.result.id}")
+
+# If it succeeded, get the RQL result
+if rql_job.result.status == "success"
+  rql_result = RollbarApi::Project.find("wealthsimple").get("/api/1/rql/job/#{rql_job.result.id}/result")
+  p rql_result
+end
 ```
 
 See https://rollbar.com/docs/api/ for a full reference of API requests and responses.
