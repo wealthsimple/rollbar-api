@@ -14,18 +14,35 @@ Next, add this line to your application's Gemfile and run `bundle` to install:
 gem 'rollbar_api'
 ```
 
-Finally, configure it in an initializer with:
-
-```
-require 'rollbar_api'
-
-ROLLBAR_PROJECT_1 = RollbarApi::Project.new("project-1-access-token")
-ROLLBAR_PROJECT_2 = RollbarApi::Project.new("project-2-access-token")
-```
-
 ## Usage
 
-TODO: Write usage instructions here
+First, configure it in an initializer with:
+
+```ruby
+require 'rollbar_api'
+
+# Add as many projects as you want
+RollbarApi::Project.add("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
+RollbarApi::Project.add("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"])
+```
+
+Next, you can fetch items, deploys, occurrences, on so on:
+
+```ruby
+items = RollbarApi::Project.find("my-project").get("/api/1/items/")
+```
+
+You can also run RQL queries:
+
+```ruby
+# Create a job
+rql_job = RollbarApi::Project.find("my-project").post("/api/1/rql/jobs", {
+  query_string: "select * from item_occurrence where item.counter=1",
+})
+
+# Check it's status
+rql_job = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.result.id}")
+```
 
 ## Development
 

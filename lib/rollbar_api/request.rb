@@ -10,7 +10,13 @@ module RollbarApi
 
     def execute
       connection.send(method) do |request|
-        request.url("#{path}?#{params.to_param}")
+        if method == :get
+          request.url("#{path}?#{params.to_param}")
+        else
+          request.url(path)
+          request.body = body_to_json(params) if params.present?
+        end
+        
         request.headers.merge!({
           "Accept" => "application/json",
           "Content-Type" => "application/json",
