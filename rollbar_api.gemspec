@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Peter Graham"]
   spec.email         = ["peter@wealthsimple.com"]
 
-  spec.summary       = %q{Rubygem for Rollbar REST API}
-  spec.description   = %q{Rubygem for read access to Rollbar REST and RQL APIs}
+  spec.summary       = %q{Rubygem for Rollbar REST and RQL APIs}
+  spec.description   = %q{Rubygem for accessing Rollbar's full REST and RQL APIs.}
   spec.homepage      = "https://github.com/wealthsimple/rollbar_api"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

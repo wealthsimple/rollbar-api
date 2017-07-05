@@ -1,6 +1,6 @@
 # RollbarApi
 
-Rubygem for read access to Rollbar REST and RQL APIs.
+Rubygem for accessing Rollbar's full REST and RQL APIs.
 
 ## Installation
 
