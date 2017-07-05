@@ -12,7 +12,7 @@ gem 'rollbar-api'
 
 ## Usage
 
-First, generate read-only access tokens for each project you need access to by navigating to **Settings** > **Project Access Tokens** and clicking **Add new access token**.
+First, generate access tokens for each project you need access to by navigating to **Settings** > **Project Access Tokens** and clicking **Add new access token**. Unless you specifically need write access, it is recommended that you generate a read-only token.
 
 Next, configure each project:
 
