@@ -13,4 +13,8 @@ RSpec.configure do |config|
   end
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
+
+  config.after(:each) do
+    RollbarApi::Project.delete_all
+  end
 end

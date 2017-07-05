@@ -44,6 +44,8 @@ rql_job = RollbarApi::Project.find("my-project").post("/api/1/rql/jobs", {
 rql_job = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.result.id}")
 ```
 
+See https://rollbar.com/docs/api/ for a full reference of API requests and responses.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -8,12 +8,15 @@ module RollbarApi
 
     def self.find(project_name)
       project_access_token = @@projects[project_name]
-      raise "No project #{project_name} configured" unless project_access_token.present?
-      new(project_name, project_access_token)
+      new(project_name, project_access_token) if project_access_token.present?
     end
 
     def self.all
       @@projects.map { |project_name, _| find(project_name) }
+    end
+
+    def self.delete_all
+      @@projects = {}
     end
 
     attr_reader :name, :access_token
