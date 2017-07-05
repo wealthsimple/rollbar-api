@@ -8,10 +8,6 @@ module RollbarApi
       @params = params
     end
 
-    def self.get!(path, params = {})
-      Request.new(method: :get, path: path, params: params).execute
-    end
-
     def execute
       connection.send(method) do |request|
         request.url("#{path}?#{params.to_param}")

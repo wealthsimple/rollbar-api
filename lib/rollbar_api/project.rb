@@ -22,13 +22,15 @@ module RollbarApi
       @access_token = access_token
     end
 
-    def fetch(path, params = {})
-      params[:access_token] = access_token
-      response = Request.get!(path, params)
-      if response.is_a?(Array)
-        response.map { |r| Resource.new(r) }
-      else
-        Resource.new(response)
+    %i(get post put delete head patch).each do |http_method|
+      define_method(http_method) do |path, params: {}|
+        params[:access_token] = access_token
+        response = Request.new(method: http_method, path: path, params: params).execute
+        if response.is_a?(Array)
+          response.map { |r| Resource.new(r) }
+        else
+          Resource.new(response)
+        end
       end
     end
   end
