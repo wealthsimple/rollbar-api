@@ -33,6 +33,15 @@ You can make HTTP `GET` calls to fetch items, deploys, occurrences, and so on by
 items = RollbarApi::Project.find("my-project").get("/api/1/items/")
 ```
 
+Specify query parameters by passing them in as a hash:
+
+```ruby
+top_items = RollbarApi::Project.find("my-project").get("/api/1/reports/top_active_items", {
+  hours: "24",
+  environments: "production,staging",
+})
+```
+
 ### RQL Queries
 
 You can also run RQL queries:
