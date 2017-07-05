@@ -57,7 +57,7 @@ rql_job = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.r
 
 # If it succeeded, get the RQL result
 if rql_job.result.status == "success"
-  rql_result = RollbarApi::Project.find("wealthsimple").get("/api/1/rql/job/#{rql_job.result.id}/result")
+  rql_result = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.result.id}/result")
   p rql_result
 end
 ```
