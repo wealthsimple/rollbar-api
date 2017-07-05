@@ -4,10 +4,10 @@ require "faraday"
 require "json"
 require "recursive-open-struct"
 
-require "rollbar_api/project"
-require "rollbar_api/request"
-require "rollbar_api/resource"
-require "rollbar_api/version"
+require "rollbar-api/project"
+require "rollbar-api/request"
+require "rollbar-api/resource"
+require "rollbar-api/version"
 
 module RollbarApi
 end

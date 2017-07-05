@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "rollbar_api"
+require "rollbar-api"
 require "rspec/collection_matchers"
 require "webmock/rspec"
 require "rspec/its"

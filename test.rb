@@ -1,7 +1,7 @@
 require "dotenv/load"
 require "pp"
 require "bundler/setup"
-require "rollbar_api"
+require "rollbar-api"
 
 RollbarApi::Project.add("wealthsimple", ENV["ROLLBAR_WEALTHSIMPLE_ACCESS_TOKEN"])
 

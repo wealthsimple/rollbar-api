@@ -1,4 +1,4 @@
-# rollbar_api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar_api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar_api)
+# rollbar-api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar-api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar-api)
 
 Rubygem for accessing Rollbar's full REST and RQL APIs.
 
@@ -11,7 +11,7 @@ https://rollbar.com/YOUR_ACCOUNT/YOUR_PROJECT/settings/access_tokens/
 Next, add this line to your application's Gemfile and run `bundle` to install:
 
 ```ruby
-gem 'rollbar_api'
+gem 'rollbar-api'
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ gem 'rollbar_api'
 First, configure it in an initializer with:
 
 ```ruby
-require 'rollbar_api'
+require 'rollbar-api'
 
 # Add as many projects as you want
 RollbarApi::Project.add("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])

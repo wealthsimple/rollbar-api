@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rollbar_api/version"
+require "rollbar-api/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "rollbar_api"
+  spec.name          = "rollbar-api"
   spec.version       = RollbarApi::VERSION
   spec.authors       = ["Peter Graham"]
   spec.email         = ["peter@wealthsimple.com"]
 
   spec.summary       = %q{Rubygem for Rollbar REST and RQL APIs}
   spec.description   = %q{Rubygem for accessing Rollbar's full REST and RQL APIs.}
-  spec.homepage      = "https://github.com/wealthsimple/rollbar_api"
+  spec.homepage      = "https://github.com/wealthsimple/rollbar-api"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
