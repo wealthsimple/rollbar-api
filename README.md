@@ -1,6 +1,8 @@
 # rollbar-api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar-api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar-api) [![](https://img.shields.io/gem/v/rollbar-api.svg)](https://rubygems.org/gems/rollbar-api)
 
-Rubygem for accessing Rollbar's full REST and RQL APIs.
+Rubygem for accessing Rollbar's full REST and RQL APIs. 
+
+The [official rollbar rubygem](https://github.com/rollbar/rollbar-gem) only covers the exception tracking portion of the API, whereas this rubygem provides a basic interface over all project-level API endpoints.
 
 ## Installation
 
