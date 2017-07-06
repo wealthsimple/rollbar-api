@@ -1,5 +1,5 @@
 describe RollbarApi::Project do
-  describe ".add" do
+  describe ".configure" do
     it "adds a Project to list" do
       expect(RollbarApi::Project.find("my-project")).to be_nil
 
