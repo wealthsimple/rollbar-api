@@ -35,13 +35,11 @@ You can make HTTP `GET` calls to fetch items, deploys, occurrences, and so on by
 
 ```ruby
 project = RollbarApi::Project.find("my-project")
+
+# List recent items:
 items = project.get("/api/1/items/")
-```
 
-Specify query parameters by passing them in as a hash:
-
-```ruby
-project = RollbarApi::Project.find("my-project")
+# Specify query parameters by passing them in as a hash:
 top_items = project.get("/api/1/reports/top_active_items", {
   hours: "24",
   environments: "production,staging",
@@ -55,16 +53,17 @@ If you need to make an HTTP `POST`, `DELETE`, and so on, just replace `.get` wit
 You can also run RQL queries:
 
 ```ruby
-# Create a job
 project = RollbarApi::Project.find("my-project")
+
+# Create a job
 rql_job = project.post("/api/1/rql/jobs", {
   query_string: "select * from item_occurrence where item.counter=1",
 })
 
-# Check its status
+# Check job status
 rql_job = project.get("/api/1/rql/job/#{rql_job.result.id}")
 
-# If it succeeded, get the RQL result
+# If job succeeded, get the RQL result
 if rql_job.result.status == "success"
   rql_result = project.get("/api/1/rql/job/#{rql_job.result.id}/result")
   p rql_result
