@@ -4,6 +4,7 @@ module RollbarApi
 
     def self.configure(account_name, account_access_token)
       @@accounts[account_name] = account_access_token
+      find(account_name)
     end
 
     def self.find(account_name)

@@ -10,6 +10,10 @@ describe RollbarApi::Account do
       expect(project.name).to eq("my-org")
       expect(project.access_token).to eq("my-token")
     end
+
+    it "returns an Account" do
+      expect(RollbarApi::Account.configure("my-org", "my-token")).to be_a(RollbarApi::Account)
+    end
   end
 
   describe ".find" do
