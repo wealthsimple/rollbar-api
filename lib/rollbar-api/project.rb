@@ -4,6 +4,7 @@ module RollbarApi
 
     def self.configure(project_name, project_access_token)
       @@projects[project_name] = project_access_token
+      find(project_name)
     end
 
     def self.find(project_name)

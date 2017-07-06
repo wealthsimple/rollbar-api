@@ -10,6 +10,10 @@ describe RollbarApi::Project do
       expect(project.name).to eq("my-project")
       expect(project.access_token).to eq("my-token")
     end
+
+    it "returns an Project" do
+      expect(RollbarApi::Project.configure("my-project", "my-token")).to be_a(RollbarApi::Project)
+    end
   end
 
   describe ".find" do

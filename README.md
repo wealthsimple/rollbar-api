@@ -34,13 +34,15 @@ RollbarApi::Project.configure("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"]
 You can make HTTP `GET` calls to fetch items, deploys, occurrences, and so on by finding any project you added in the configuration and calling `.get` with the API endpoint:
 
 ```ruby
-items = RollbarApi::Project.find("my-project").get("/api/1/items/")
+project = RollbarApi::Project.find("my-project")
+items = project.get("/api/1/items/")
 ```
 
 Specify query parameters by passing them in as a hash:
 
 ```ruby
-top_items = RollbarApi::Project.find("my-project").get("/api/1/reports/top_active_items", {
+project = RollbarApi::Project.find("my-project")
+top_items = project.get("/api/1/reports/top_active_items", {
   hours: "24",
   environments: "production,staging",
 })
@@ -54,16 +56,17 @@ You can also run RQL queries:
 
 ```ruby
 # Create a job
-rql_job = RollbarApi::Project.find("my-project").post("/api/1/rql/jobs", {
+project = RollbarApi::Project.find("my-project")
+rql_job = project.post("/api/1/rql/jobs", {
   query_string: "select * from item_occurrence where item.counter=1",
 })
 
 # Check its status
-rql_job = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.result.id}")
+rql_job = project.get("/api/1/rql/job/#{rql_job.result.id}")
 
 # If it succeeded, get the RQL result
 if rql_job.result.status == "success"
-  rql_result = RollbarApi::Project.find("my-project").get("/api/1/rql/job/#{rql_job.result.id}/result")
+  rql_result = project.get("/api/1/rql/job/#{rql_job.result.id}/result")
   p rql_result
 end
 ```
@@ -87,7 +90,8 @@ RollbarApi::Account.configure("my-organization", ENV["ROLLBAR_ACCOUNT_ACCESS_TOK
 Making API requests through Account-level APIs works similarly to project-level API. Here's an example that fetches all Rollbar user details for your account:
 
 ```ruby
-users = RollbarApi::Account.find("my-organization").get("/api/1/users")
+account = RollbarApi::Account.find("my-organization")
+users = account.get("/api/1/users")
 ```
 
 ## Development
