@@ -1,5 +1,4 @@
 require "dotenv/load"
-require "pp"
 require "bundler/setup"
 require "rollbar-api"
 
@@ -13,7 +12,7 @@ top_active_items = project.get("/api/1/reports/top_active_items", {
   environments: "production,staging",
 })
 
-top_active_items.result.each_with_index do |item, i|
-  pp i, item
+top_active_items.result.first(5).each_with_index do |item, i|
+  p i, item
   puts "=" * 80
 end

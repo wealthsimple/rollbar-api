@@ -9,8 +9,9 @@ module RollbarApi
       else
         response
       end
-      @struct = RecursiveOpenStruct.new(@response_json, {recurse_over_arrays: true})
+      @struct = ResourceStruct.new(@response_json, {recurse_over_arrays: true})
     end
+    delegate :inspect, to: :@struct
 
     def as_json(options = {})
       @response_json
@@ -18,6 +19,12 @@ module RollbarApi
 
     def method_missing(name, *args)
       @struct.send(name, *args)
+    end
+  end
+
+  class ResourceStruct < RecursiveOpenStruct
+    def inspect
+      %{#<RollbarApi::Resource: #{JSON.pretty_generate(@table)}>}
     end
   end
 end

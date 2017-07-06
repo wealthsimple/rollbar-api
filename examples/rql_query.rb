@@ -1,5 +1,4 @@
 require "dotenv/load"
-require "pp"
 require "bundler/setup"
 require "rollbar-api"
 
@@ -15,9 +14,9 @@ rql_job = project.post("/api/1/rql/jobs", {
 
 # Fetch job status
 rql_job = project.get("/api/1/rql/job/#{rql_job.result.id}")
-pp rql_job
+p rql_job
 
 if rql_job.result.status == "success"
   # Print out succeeded job result
-  pp project.get("/api/1/rql/job/#{rql_job.result.id}/result")
+  p project.get("/api/1/rql/job/#{rql_job.result.id}/result")
 end

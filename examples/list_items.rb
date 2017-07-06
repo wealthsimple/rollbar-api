@@ -1,5 +1,4 @@
 require "dotenv/load"
-require "pp"
 require "bundler/setup"
 require "rollbar-api"
 
@@ -13,6 +12,6 @@ items = project.get("/api/1/items")
 
 # Print out the first 5 items
 items.result.items.first(5).each do |item|
-  pp item
+  p item
   puts "=" * 80
 end
