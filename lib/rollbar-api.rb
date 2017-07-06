@@ -4,6 +4,7 @@ require "faraday"
 require "json"
 require "recursive-open-struct"
 
+require "rollbar-api/account"
 require "rollbar-api/project"
 require "rollbar-api/request"
 require "rollbar-api/resource"

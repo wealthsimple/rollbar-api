@@ -1,8 +1,10 @@
 # rollbar-api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar-api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar-api) [![](https://img.shields.io/gem/v/rollbar-api.svg)](https://rubygems.org/gems/rollbar-api)
 
-Rubygem for accessing Rollbar's full REST and RQL APIs. 
+Rubygem for accessing Rollbar's full REST and RQL APIs.
 
-The [official rollbar rubygem](https://github.com/rollbar/rollbar-gem) only covers a small portion of the API, whereas this rubygem provides an interface over all project-level API endpoints, including the Rollbar Query Language (RQL) endpoints.
+The [official rollbar rubygem](https://github.com/rollbar/rollbar-gem) only covers a small portion of the API, whereas this rubygem provides an interface over all API endpoints, including the Rollbar Query Language (RQL) endpoints.
+
+This gem aims to be future-compatible by not hard-coding any endpoints or request structures. See https://rollbar.com/docs/api/ for a full reference of all API requests and responses.
 
 ## Installation
 
@@ -12,9 +14,9 @@ Add this line to your application's Gemfile and run `bundle` to install:
 gem 'rollbar-api'
 ```
 
-## Usage
+## Usage (Project-level APIs)
 
-First, generate read-only access tokens for each project you need access to by navigating to **Settings** > **Project Access Tokens** and clicking **Add new access token**.
+First, generate access tokens for each project you need access to by navigating to **Settings** > **Project Access Tokens** and clicking **Add new access token**. Unless you specifically need write access, it is recommended that you generate a read-only token.
 
 Next, configure each project:
 
@@ -23,11 +25,11 @@ Next, configure each project:
 require 'rollbar-api'
 
 # Add as many projects as you need. Each should have a unique access token.
-RollbarApi::Project.add("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
-RollbarApi::Project.add("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"])
+RollbarApi::Project.configure("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
+RollbarApi::Project.configure("other-project", ENV["OTHER_PROJECT_ACCESS_TOKEN"])
 ```
 
-### REST API
+### Making API Requests
 
 You can make HTTP `GET` calls to fetch items, deploys, occurrences, and so on by finding any project you added in the configuration and calling `.get` with the API endpoint:
 
@@ -43,6 +45,8 @@ top_items = RollbarApi::Project.find("my-project").get("/api/1/reports/top_activ
   environments: "production,staging",
 })
 ```
+
+If you need to make an HTTP `POST`, `DELETE`, and so on, just replace `.get` with `.post`, `.delete`, and so forth.
 
 ### RQL Queries
 
@@ -64,7 +68,27 @@ if rql_job.result.status == "success"
 end
 ```
 
-See https://rollbar.com/docs/api/ for a full reference of API requests and responses.
+## Usage (Account-level APIs)
+
+First, generate access tokens for each account you need access to by navigating to https://rollbar.com/settings/accounts/ACCOUNT_NAME/access_tokens/ and clicking **Add new access token**. Unless you specifically need write access, it is recommended that you generate a read-only token.
+
+Next, configure each account:
+
+```ruby
+# config/initializers/rollbar-api.rb in a Rails project
+require 'rollbar-api'
+
+# Add as many accounts as you need (normally just one). Each should have a unique access token.
+RollbarApi::Account.configure("my-organization", ENV["ROLLBAR_ACCOUNT_ACCESS_TOKEN"])
+```
+
+### Making API Requests
+
+Making API requests through Account-level APIs works similarly to project-level API. Here's an example that fetches all Rollbar user details for your account:
+
+```ruby
+users = RollbarApi::Account.find("my-organization").get("/api/1/users")
+```
 
 ## Development
 

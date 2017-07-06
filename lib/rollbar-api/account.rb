@@ -1,22 +1,22 @@
 module RollbarApi
-  class Project
-    @@projects = {}
+  class Account
+    @@accounts = {}
 
-    def self.configure(project_name, project_access_token)
-      @@projects[project_name] = project_access_token
+    def self.configure(account_name, account_access_token)
+      @@accounts[account_name] = account_access_token
     end
 
-    def self.find(project_name)
-      project_access_token = @@projects[project_name]
-      new(project_name, project_access_token) if project_access_token.present?
+    def self.find(account_name)
+      account_access_token = @@accounts[account_name]
+      new(account_name, account_access_token) if account_access_token.present?
     end
 
     def self.all
-      @@projects.map { |project_name, _| find(project_name) }
+      @@accounts.map { |account_name, _| find(account_name) }
     end
 
     def self.delete_all
-      @@projects = {}
+      @@accounts = {}
     end
 
     attr_reader :name, :access_token

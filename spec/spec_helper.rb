@@ -15,6 +15,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
 
   config.after(:each) do
+    RollbarApi::Account.delete_all
     RollbarApi::Project.delete_all
   end
 end
