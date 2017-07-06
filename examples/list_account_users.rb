@@ -1,5 +1,4 @@
 require "dotenv/load"
-require "pp"
 require "bundler/setup"
 require "rollbar-api"
 
@@ -9,6 +8,6 @@ account_access_token = ENV["ROLLBAR_ACCOUNT_ACCESS_TOKEN"] or raise "Must specif
 account = RollbarApi::Account.configure(account_name, account_access_token)
 
 users = account.get("/api/1/users")
-users.result.users.each do |user|
-  p [user.username, user.email]
+users.result.users.first(5).each do |user|
+  p user
 end
