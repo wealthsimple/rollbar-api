@@ -1,4 +1,4 @@
-# rollbar-api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar-api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar-api) [![](https://img.shields.io/gem/v/rollbar-api.svg)](https://rubygems.org/gems/rollbar-api)
+# rollbar-api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar-api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar-api) [![Gem Version](https://badge.fury.io/rb/rollbar-api.svg)](https://rubygems.org/gems/rollbar-api)
 
 Rubygem for accessing Rollbar's full REST and RQL APIs.
 
@@ -91,6 +91,18 @@ Making API requests through Account-level APIs works similarly to project-level 
 ```ruby
 account = RollbarApi::Account.find("my-organization")
 users = account.get("/api/1/users")
+```
+
+## Logging
+
+You can optionally override the logger with:
+
+```ruby
+# Set it to your own custom logger
+RollbarApi.logger = Rails.logger
+
+# Disable logging altogether
+RollbarApi.logger = Logger.new(nil)
 ```
 
 ## Development
