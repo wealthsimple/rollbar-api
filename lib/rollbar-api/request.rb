@@ -16,7 +16,7 @@ module RollbarApi
           request.url(path)
           request.body = body_to_json(params) if params.present?
         end
-        
+
         request.headers.merge!({
           "Accept" => "application/json",
           "Content-Type" => "application/json",
@@ -29,7 +29,7 @@ module RollbarApi
 
     def connection
       Faraday.new(url: "https://api.rollbar.com") do |faraday|
-        faraday.response :logger, ::Logger.new(STDOUT), bodies: false
+        faraday.response :logger, RollbarApi.logger, bodies: false
         faraday.adapter Faraday.default_adapter
         faraday.use Faraday::Response::RaiseError
       end

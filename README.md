@@ -93,6 +93,18 @@ account = RollbarApi::Account.find("my-organization")
 users = account.get("/api/1/users")
 ```
 
+## Logging
+
+You can optionally override the logger with:
+
+```ruby
+# Set it to your own custom logger
+RollbarApi.logger = Rails.logger
+
+# Disable logging altogether
+RollbarApi.logger = Logger.new(nil)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
