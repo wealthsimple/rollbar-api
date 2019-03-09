@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.add_dependency "activesupport", ">= 4"
-  spec.add_dependency "faraday", "0.12.1"
+  spec.add_dependency "faraday", "< 1.0"
   spec.add_dependency "recursive-open-struct"
 
   spec.add_development_dependency "bundler", "~> 1.14"
