@@ -29,9 +29,9 @@ module RollbarApi
 
     def connection
       Faraday.new(url: "https://api.rollbar.com") do |faraday|
+        faraday.use Faraday::Response::RaiseError
         faraday.response :logger, RollbarApi.logger, bodies: false
         faraday.adapter Faraday.default_adapter
-        faraday.use Faraday::Response::RaiseError
       end
     end
 
