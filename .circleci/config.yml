@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/wealthsimple
   docker:
-    - image: circleci/ruby:2.5.5
+    - image: circleci/ruby:2.5.8
 
 references:
   attach_code_workspace: &attach_code_workspace
