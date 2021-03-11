@@ -1,0 +1,12 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rollbar-api
+  description: Rollbar API client
+  tags:
+    - ruby
+    - open-source
+spec:
+  type: library
+  lifecycle: production
