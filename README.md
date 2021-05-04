@@ -1,4 +1,5 @@
-# rollbar-api [![CircleCI](https://circleci.com/gh/wealthsimple/rollbar-api.svg?style=svg)](https://circleci.com/gh/wealthsimple/rollbar-api) [![Gem Version](https://badge.fury.io/rb/rollbar-api.svg)](https://rubygems.org/gems/rollbar-api)
+# rollbar-api
+[![GitHub Actions Badge](https://github.com/wealthsimple/rollbar-api/actions/workflows/main.yml/badge.svg)](https://github.com/wealthsimple/rollbar-api/actions)
 
 Rubygem for accessing Rollbar's full REST and RQL APIs.
 
@@ -22,7 +23,7 @@ Next, configure each project:
 
 ```ruby
 # config/initializers/rollbar-api.rb in a Rails project
-require 'rollbar-api'
+require 'rollbar_api'
 
 # Add as many projects as you need. Each should have a unique access token.
 RollbarApi::Project.configure("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])
@@ -77,8 +78,8 @@ First, generate access tokens for each account you need access to by navigating 
 Next, configure each account:
 
 ```ruby
-# config/initializers/rollbar-api.rb in a Rails project
-require 'rollbar-api'
+# config/initializers/rollbar_api.rb in a Rails project
+require 'rollbar_api'
 
 # Add as many accounts as you need (normally just one). Each should have a unique access token.
 RollbarApi::Account.configure("my-organization", ENV["ROLLBAR_ACCOUNT_ACCESS_TOKEN"])

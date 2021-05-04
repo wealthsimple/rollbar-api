@@ -1,15 +1,2 @@
-require "active_support"
-require "active_support/core_ext"
-require "faraday"
-require "json"
-require "recursive-open-struct"
-
-require "rollbar-api/account"
-require "rollbar-api/logger"
-require "rollbar-api/project"
-require "rollbar-api/request"
-require "rollbar-api/resource"
-require "rollbar-api/version"
-
-module RollbarApi
-end
+# backwards-compatble way to migrate from `require 'rollbar-api'`
+require 'rollbar_api'

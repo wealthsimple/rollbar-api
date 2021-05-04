@@ -1,32 +1,35 @@
-module RollbarApi
-  class Project
-    @@projects = {}
+# frozen_string_literal: true
 
-    def self.configure(project_name, project_access_token)
-      @@projects[project_name] = project_access_token
-      find(project_name)
+module RollbarApi
+  class Account
+    @accounts = {}
+
+    def self.configure(account_name, account_access_token)
+      @accounts[account_name] = account_access_token
+      find(account_name)
     end
 
-    def self.find(project_name)
-      project_access_token = @@projects[project_name]
-      new(project_name, project_access_token) if project_access_token.present?
+    def self.find(account_name)
+      account_access_token = @accounts[account_name]
+      new(account_name, account_access_token) if account_access_token.present?
     end
 
     def self.all
-      @@projects.map { |project_name, _| find(project_name) }
+      @accounts.map { |account_name, _| find(account_name) }
     end
 
     def self.delete_all
-      @@projects = {}
+      @accounts = {}
     end
 
     attr_reader :name, :access_token
+
     def initialize(name, access_token)
       @name = name
       @access_token = access_token
     end
 
-    %i(get post put delete head patch).each do |http_method|
+    %i[get post put delete head patch].each do |http_method|
       define_method(http_method) do |path, params = {}|
         params[:access_token] = access_token
         response = Request.new(method: http_method, path: path, params: params).execute

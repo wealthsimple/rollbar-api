@@ -1,0 +1,7 @@
+inherit_gem:
+  ws-style:
+    - default.yml
+
+Naming/FileName:
+  Exclude:
+    - lib/rollbar-api.rb
