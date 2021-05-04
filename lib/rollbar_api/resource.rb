@@ -23,7 +23,7 @@ module RollbarApi
       @struct.send(name, *args)
     end
 
-    def respond_to_missing?(method_name, include_private = false)
+    def respond_to_missing?(method_name, _include_private = false)
       @struct.respond_to?(method_name)
     end
   end
