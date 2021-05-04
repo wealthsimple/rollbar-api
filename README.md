@@ -23,7 +23,7 @@ Next, configure each project:
 
 ```ruby
 # config/initializers/rollbar-api.rb in a Rails project
-require 'rollbar-api'
+require 'rollbar_api'
 
 # Add as many projects as you need. Each should have a unique access token.
 RollbarApi::Project.configure("my-project", ENV["MY_PROJECT_ACCESS_TOKEN"])

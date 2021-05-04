@@ -1,12 +1,14 @@
-require "bundler/setup"
-require "rollbar-api"
-require "rspec/collection_matchers"
-require "webmock/rspec"
-require "rspec/its"
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'rollbar_api'
+require 'rspec/collection_matchers'
+require 'webmock/rspec'
+require 'rspec/its'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
@@ -14,7 +16,7 @@ RSpec.configure do |config|
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
 
-  config.after(:each) do
+  config.after do
     RollbarApi::Account.delete_all
     RollbarApi::Project.delete_all
   end

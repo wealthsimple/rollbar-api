@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 module RollbarApi
   class Request
     attr_reader :method, :path, :params
+
     def initialize(method:, path:, params:)
       @method = method
-      path = "/#{path}" unless path.start_with?("/")
+      path = "/#{path}" unless path.start_with?('/')
       @path = path
       @params = params
     end
@@ -18,17 +21,17 @@ module RollbarApi
         end
 
         request.headers.merge!({
-          "Accept" => "application/json",
-          "Content-Type" => "application/json",
+          'Accept' => 'application/json',
+          'Content-Type' => 'application/json',
         })
         request
       end
     end
 
-  private
+    private
 
     def connection
-      Faraday.new(url: "https://api.rollbar.com") do |faraday|
+      Faraday.new(url: 'https://api.rollbar.com') do |faraday|
         faraday.use Faraday::Response::RaiseError
         faraday.response :logger, RollbarApi.logger, bodies: false
         faraday.adapter Faraday.default_adapter
@@ -36,11 +39,9 @@ module RollbarApi
     end
 
     def body_to_json(body)
-      if body
-        body.is_a?(Array) || body.is_a?(Hash) ? body.to_json : body
-      else
-        nil
-      end
+      return if body.blank?
+
+      body.is_a?(Array) || body.is_a?(Hash) ? body.to_json : body
     end
   end
 end
