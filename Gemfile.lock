@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rollbar-api (0.4.0)
+    rollbar-api (0.4.1)
       activesupport (>= 4)
       faraday (< 1.0)
       recursive-open-struct

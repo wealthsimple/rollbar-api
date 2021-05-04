@@ -78,8 +78,8 @@ First, generate access tokens for each account you need access to by navigating 
 Next, configure each account:
 
 ```ruby
-# config/initializers/rollbar-api.rb in a Rails project
-require 'rollbar-api'
+# config/initializers/rollbar_api.rb in a Rails project
+require 'rollbar_api'
 
 # Add as many accounts as you need (normally just one). Each should have a unique access token.
 RollbarApi::Account.configure("my-organization", ENV["ROLLBAR_ACCOUNT_ACCESS_TOKEN"])
